@@ -1,0 +1,63 @@
+{
+  "Actor": {
+    "types": ["pokemon", "trainer"],
+    "templates": {
+      "base": {
+        "rank": "",
+        "nature": "",
+        "confidence": 0,
+        "health": 0,
+        "will": 0
+      }
+    },
+    "pokemon": {
+      "templates": ["base"]
+    },
+    "trainer": {
+      "templates": ["base"],
+      "age": 0,
+      "concept": "",
+      "money": 0,
+      "team": [],
+
+      "strength": 0,
+      "dexterity": 0,
+      "vitality": 0,
+      "insight": 0,
+
+      "brawl": 0,
+      "throw": 0,
+      "evasion": 0,
+      "weapons": 0,
+
+      "alert": 0,
+      "athletic": 0,
+      "nature": 0,
+      "stealth": 0,
+
+      "allure": 0,
+      "etiquette": 0,
+      "intimidate": 0,
+      "perform": 0,
+
+      "crafts": 0,
+      "lore": 0,
+      "medicine": 0,
+      "science": 0,
+
+      "tough": 0,
+      "cool": 0,
+      "beauty": 0,
+      "clever": 0,
+      "cute": 0,
+
+      "pokedex": {
+        "caught": 0,
+        "seen": 0
+      },
+
+      "inventory": [],
+      "badges": []
+    }
+  }
+}

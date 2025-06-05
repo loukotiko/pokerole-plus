@@ -1,0 +1,15 @@
+{
+  "POKEROLE+": {
+    "SYSTEM.TITLE": "Pokérole+",
+    "SETTINGS": {
+      "DEBUG": {
+        "NAME": "Debug mode",
+        "HINT": "Activate debug mode for developers."
+      },
+      "INITIATIVE_FORMULA": {
+        "NAME": "Initiative formula",
+        "HINT": "Formula used to determine initiative order in combats."
+      }
+    }
+  }
+}
