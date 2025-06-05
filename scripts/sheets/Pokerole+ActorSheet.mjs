@@ -1,12 +1,20 @@
-import { TEMPLATES } from "../templates.mjs";
+import { ClassExtender } from "../utils.mjs";
+import { PokemonActorSheet } from "./PokemonActorSheet.mjs";
+import { TrainerActorSheet } from "./TrainerActorSheet.mjs";
 
 export class PokerolePlusActorSheet extends ActorSheet {
+  clx = new ClassExtender(
+    () => this,
+    () => this.actor.type,
+    { trainer: TrainerActorSheet, pokemon: PokemonActorSheet }
+  );
+
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["pokerole+", "sheet", "actor"],
-      width: 720,
-      height: 600,
+      classes: ["pokerole-plus", "actor-sheet"],
+      width: 400,
+      height: "auto",
       tabs: [
         {
           navSelector: ".sheet-tabs",
@@ -19,20 +27,10 @@ export class PokerolePlusActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    switch (this.actor.type) {
-      default:
-      case "trainer":
-        return TEMPLATES.TRAINER_ACTOR_SHEET;
-        break;
-      case "pokemon":
-        return TEMPLATES.POKEMON_ACTOR_SHEET;
-        break;
-    }
+    return this.clx.extends((ex) => ex.template);
   }
   /** @override */
   async getData() {
-    const context = await super.getData();
-
-    return context;
+    return this.clx.extends((ex) => ex.getData)();
   }
 }

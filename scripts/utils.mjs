@@ -15,3 +15,21 @@ export function createEnum(keys, prefix = "") {
     {}
   );
 }
+
+export class ClassExtender {
+  extensionGetter;
+  superClassGetter;
+
+  constructor(superClassGetter, variableGetter, extensions) {
+    this.superClassGetter = superClassGetter;
+    this.extensionGetter = () => new extensions[variableGetter()]();
+  }
+
+  extends(callback) {
+    const functionOrVariable = callback(this.extensionGetter());
+    const isVariable = typeof functionOrVariable === typeof Function;
+
+    if (isVariable) return functionOrVariable.bind(this.superClassGetter());
+    return functionOrVariable;
+  }
+}

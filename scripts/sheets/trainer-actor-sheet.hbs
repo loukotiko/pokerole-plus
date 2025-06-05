@@ -1,4 +1,74 @@
 <form class="{{cssClass}} {{actor.type}}">
-  hello trainer
-  {{actor.name}}
+  <div class="columns">
+    <div class="column">
+      <div class="character-picture-container">
+        <img
+          class="character-picture"
+          src="{{actor.img}}"
+          title="{{actor.name}}"
+          data-edit="img"
+        />
+      </div>
+    </div>
+    <div class="column">
+      <div class="column-header">
+        <h1>Pokémon League</h1>
+        <div class="data-group">
+          <div class="data data-rank">
+            <label>Rank :</label>
+            <select
+              name="system.rank"
+              type="text"
+              value="{{actor.system.rank}}"
+            >
+              {{selectOptions ranks selected=actor.system.rank localize=true}}
+            </select>
+          </div>
+        </div>
+        <div class="data-group">
+          <div class="data data-name">
+            <label>Name :</label>
+            <input name="name" type="text" value="{{actor.name}}" />
+          </div>
+          <div class="data data-age">
+            <label>Age :</label>
+            <input
+              name="system.age"
+              type="number"
+              value="{{actor.system.age}}"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="column-content">
+        <div class="data-container">
+          <div class="data-group">
+            <div class="data data-money">
+              <label for="money">Money :</label>
+              <input
+                name="money"
+                type="number"
+                value="{{actor.system.money}}"
+              />
+            </div>
+            <div class="data data-age">
+              <label for="system.nature">Nature :</label>
+              <select
+                name="system.nature"
+                type="text"
+                value="{{actor.system.nature}}"
+              >
+                {{selectOptions
+                  natures
+                  selected=actor.system.nature
+                  localize=true
+                }}
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>

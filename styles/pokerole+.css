@@ -1,0 +1,188 @@
+@font-face {
+  font-family: "PokerolePlus-Squared";
+  src: url("../assets/fonts/Oxanium-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PokerolePlus-Round";
+  src: url("../assets/fonts/Outfit-VariableFont_wght.ttf") format("truetype");
+}
+
+.pokerole-plus {
+  /* COLORS */
+  --red: #de4a2c;
+  --dark-red: #ab4128;
+  --black: rgb(19, 13, 12);
+
+  /* STYLES */
+  --header-background-color: var(--red);
+  --header-border-color: var(--dark-red);
+  --header-text-color: white;
+
+  --data-background-color: white;
+  --data-text-color: var(--black);
+  --data-border-color: var(--black);
+
+  /* SIZES */
+  --big-radius: 16px;
+  --big-spacing: 16px;
+  --small-spacing: 8px;
+
+  /* UTILS */
+  --padding-ratio: 0.4;
+
+  .columns {
+    display: flex;
+  }
+
+  &.actor-sheet {
+    .window-header {
+      background-color: var(--header-background-color);
+      border-radius: var(--big-radius) var(--big-radius) 0 0;
+      border-bottom: 3px solid var(--header-border-color);
+      padding: calc(var(--big-radius) * var(--padding-ratio)) var(--big-radius);
+
+      /* reset */
+      line-height: normal;
+      flex: none;
+    }
+    .window-content {
+      /* reset */
+      padding: 0;
+      overflow: unset;
+      border-radius: 0 0 var(--big-radius) var(--big-radius);
+
+      .columns .column:nth-child(2) {
+        flex: 1;
+      }
+
+      .character-picture-container {
+        position: relative;
+        &::before {
+          content: "";
+          display: block;
+          background: url(../assets/pokeball.png);
+          width: 80px;
+          height: 80px;
+          background-size: contain;
+          position: absolute;
+          filter: invert(38%);
+          rotate: -20deg;
+          bottom: 3px;
+          right: 6px;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+        .character-picture {
+          width: 140px;
+          height: 140px;
+          border-radius: var(--big-radius);
+          border: 3px solid var(--data-border-color);
+          object-fit: cover;
+          object-position: 50% 0;
+          margin: var(--big-spacing);
+        }
+      }
+
+      .column-header {
+        flex: 1;
+        margin-top: -3px;
+        position: relative;
+        z-index: 1;
+        background-color: var(--header-background-color);
+        color: var(--header-text-color);
+        border-radius: 0 0 var(--big-radius) var(--big-radius);
+        padding: var(--small-spacing);
+        filter: drop-shadow(-2px 3px 0 var(--header-border-color));
+
+        display: flex;
+        flex-direction: column;
+        grid-gap: var(--small-spacing);
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: -0.5px;
+          left: calc(0.5px + var(--big-radius) * -1);
+          width: var(--big-radius);
+          height: var(--big-radius);
+          background-color: var(--header-background-color);
+          clip-path: path("M16 0 0 0 S16 0, 16 16 Z");
+        }
+
+        h1 {
+          text-transform: uppercase;
+          font-style: italic;
+          font-family: PokerolePlus-Squared;
+          font-size: 20px;
+          line-height: normal;
+          font-weight: 600;
+          text-align: center;
+
+          /* reset */
+          padding: 0;
+          margin: 0;
+          border: 0;
+        }
+
+        .data-group {
+          border: 0;
+
+          .data-age {
+            width: 60px;
+            flex: none;
+          }
+        }
+      }
+
+      .column-content {
+        display: flex;
+        flex-direction: column;
+        grid-gap: var(--small-spacing);
+        padding: var(--small-spacing);
+      }
+
+      .data-group {
+        display: flex;
+        background-color: var(--data-background-color);
+        border-radius: var(--big-radius);
+        border: 3px solid var(--data-border-color);
+        .data {
+          flex: 1;
+          color: var(--data-text-color);
+          position: relative;
+          label {
+            text-transform: uppercase;
+            font-family: PokerolePlus-Squared;
+            font-size: 9px;
+            font-weight: 800;
+            position: absolute;
+            top: 1px;
+            left: var(--big-radius);
+            pointer-events: none;
+          }
+          input,
+          select {
+            font-family: PokerolePlus-Round;
+            appearance: none;
+            display: block;
+            width: 100%;
+            border: 0;
+            background: none;
+            padding: 10px var(--big-spacing) 0px;
+          }
+
+          &:first-child input,
+          select {
+            border-radius: var(--big-radius) 0 0 var(--big-radius);
+          }
+          &:last-child input,
+          select {
+            border-radius: 0 var(--big-radius) var(--big-radius) 0;
+          }
+        }
+      }
+    }
+  }
+}
